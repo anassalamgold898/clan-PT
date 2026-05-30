@@ -2,22 +2,110 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body { background: #000; color: #fff; font-family: 'Arial', sans-serif; margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; }
-        .container { text-align: center; border: 1px solid #333; padding: 40px; border-radius: 10px; background: rgba(20, 20, 20, 0.8); box-shadow: 0 0 20px rgba(255, 69, 0, 0.2); }
-        h1 { font-size: 3em; margin: 0; color: #ff4500; animation: glow 2s infinite alternate; }
-        .status { margin: 20px 0; color: #888; }
-        .btn { display: block; margin: 15px auto; padding: 15px 50px; background: transparent; border: 2px solid #ff4500; color: #ff4500; text-decoration: none; font-weight: bold; transition: 0.3s; width: 200px; }
-        .btn:hover { background: #ff4500; color: #fff; }
-        @keyframes glow { from { text-shadow: 0 0 5px #ff4500; } to { text-shadow: 0 0 20px #ff4500; } }
+        body { margin: 0; padding: 0; background: #000; color: #fff; font-family: sans-serif; overflow-x: hidden; }
+
+        /* شاشة التحميل مع النص */
+        #loading-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: flex; justify-content: center; align-items: center; flex-direction: column; }
+        .loader-logo { font-size: 2.5em; font-weight: bold; letter-spacing: 5px; }
+        .loader-subtitle { color: #ff4500; font-size: 0.9em; letter-spacing: 3px; margin-bottom: 15px; }
+        .progress-bar { width: 200px; height: 3px; background: #333; }
+        .fill { height: 100%; background: #ff4500; width: 0%; animation: load 3s forwards; }
+        .loading-text { color: #888; font-size: 0.8em; margin-top: 10px; }
+        @keyframes load { to { width: 100%; } }
+
+        /* الهيدر والمحتوى */
+        .header { display: flex; justify-content: space-between; padding: 20px; align-items: center; }
+        .discord-btn { border: 1px solid #ff4500; color: #ff4500; padding: 6px 20px; text-decoration: none; }
+        .content { text-align: center; padding: 50px 0; }
+        .connect-btn { background: #ff4500; color: #fff; padding: 15px 40px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 20px; }
+
+        /* الإحصائيات */
+        .stats-container { display: flex; justify-content: center; gap: 40px; margin: 40px 0; }
+        .stat-box { text-align: center; }
+
+        /* شريط التنبيهات */
+        .alert-bar { display: flex; align-items: center; background: #1a0a0a; border: 1px solid #333; width: 80%; margin: 20px auto; overflow: hidden; }
+        .alert-box { background: #ff4500; color: #000; padding: 10px 20px; font-weight: bold; z-index: 1; }
+        .marquee-text { padding: 10px; font-weight: bold; }
+
+        /* تاريخ الكلان */
+        .timeline-container { max-width: 800px; margin: 50px auto; padding: 20px; }
+        .timeline-item { border-right: 2px solid #ff4500; padding-right: 20px; margin-bottom: 30px; position: relative; }
+        .year { color: #ff4500; font-weight: bold; font-size: 1.2em; }
+
+        /* قسم الشركاء المتحرك */
+        .partners-section { text-align: center; padding: 40px 0; }
+        .partners-logos { display: flex; justify-content: center; gap: 40px; animation: slide 5s ease-in-out infinite alternate; }
+        @keyframes slide { from { transform: translateX(-20px); } to { transform: translateX(20px); } }
+        .partners-logos img { height: 50px; opacity: 0.7; }
+
+        /* الفوتر */
+        .footer { text-align: center; padding: 40px; border-top: 1px solid #222; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>PHANTOM</h1>
-        <p class="status">// جاري الاتصال بالخادم...</p>
-        <a href="رابط_الديسكورد_هنا" class="btn">دخول الديسكورد</a>
-        <a href="#" class="btn">المزيد عن الكلان</a>
+
+    <!-- شاشة التحميل -->
+    <div id="loading-screen">
+        <div class="loader-logo">RED STORM</div>
+        <div class="loader-subtitle">ZERO OUTBREAK</div>
+        <div class="progress-bar"><div class="fill"></div></div>
+        <div class="loading-text">...CONNECTING</div>
     </div>
-</body>
-</html>
+
+    <!-- الهيدر -->
+    <div class="header">
+        <div style="font-weight:bold;">RED STORM</div>
+        <a href="#" class="discord-btn">DISCORD ⚡</a>
+    </div>
+
+    <!-- المحتوى -->
+    <div class="content">
+        <h1>RS</h1>
+        <h2>RED STORM</h2>
+        <p style="color:#ff4500;">ZERO OUTBREAK</p>
+        <a href="#" class="connect-btn">CONNECT SERVER ⚡</a>
+    </div>
+
+    <!-- الإحصائيات -->
+    <div class="stats-container">
+        <div class="stat-box"><div>LIVE ●</div><div style="color:#888;">SERVER STATUS</div></div>
+        <div class="stat-box"><div>390</div><div style="color:#888;">DISCORD MEMBERS</div></div>
+        <div class="stat-box"><div>54</div><div style="color:#888;">PLAYERS ONLINE</div></div>
+        <div class="stat-box"><div>32ms</div><div style="color:#888;">PING</div></div>
+    </div>
+<!-- شريط التنبيهات المتحرك -->
+    <div class="alert-bar">
+        <div class="alert-box">ALERT ⚠️</div>
+        <marquee class="marquee-text">⚡ ALERT // رجال Red Storm يرسلون تحياتهم // تحذير الكلان فقط يلزم مستوى حسابك 60 فما فوق // المحصن يدعس الجميع // تحذير ليفل 3 بدأ</marquee>
+    </div>
+
+    <!-- تاريخ الكلان -->
+    <div class="timeline-container">
+        <h2 style="text-align:center; color:#ff4500;">تاريخ Red Storm</h2>
+        <div class="timeline-item"><div class="year">2019</div><p>بدأ الكلان من 20 لاعب من أبناء المنطقة، وبدأنا بأسماء وكلانات مختلفة، إلى أن استقرينا أخيرًا على اسمنا الحالي: Red Storm.</p></div>
+        <div class="timeline-item"><div class="year">2020</div><p>في هذا العام كانت اللعبة مليئة بالهاكات، ومع ذلك استطعنا إكمال الغاليات، ووصلنا إلى كونكر في أكثر من سيزون رغم صعوبة اللعب والتحديات الكبيرة.</p></div>
+        <div class="timeline-item"><div class="year">2024</div><p>أصبح كلاننا الآن ينافس أقوى الكلانات في الشرق الأوسط، واستطعنا الحصول على التوب الأول أكثر من مرة.</p></div>
+        <div class="timeline-item"><div class="year">2026 - اليوم</div><p>الآن أصبح لدينا عدة فروع بسبب زيادة عدد اللاعبين، فلم يعد لدينا كلان واحد فقط، بل عدة كلانات تحمل جميعها اسم Red Storm.</p></div>
+    </div>
+
+    <!-- قسم الشركاء -->
+    <div class="partners-section">
+        <h3>شركاؤنا</h3>
+        <div class="partners-logos">
+            <img src="https://i.ibb.co/4wf3v4WW/123456789.jpg" alt="Partner">
+            <img src="https://i.ibb.co/r20sVRpd/1234567.jpg" alt="Partner">
+            <img src="https://i.ibb.co/KpxFgJKD/123456.jpg" alt="Partner">
+            <img src="https://i.ibb.co/fzTzwWZ1/12345.jpg" alt="Partner">
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <div class="footer">
+        <h3>RED STORM</h3>
+        <p>مقرها في العراق</p>
+        <div style="font-size: 2em; margin: 15px 0;">𝕏  Discord</div>
+        <p style="color:#555;">© 2026 RED STORM. جميع الحقوق محفوظة.</p>
+    </div>
